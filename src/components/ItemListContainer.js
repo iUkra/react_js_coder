@@ -2,7 +2,7 @@ import React from 'react';
 
 const ItemListContainer = ({ greeting }) => {
   return (
-    <div>
+    <div className="item-list-container">
       <p>{greeting}</p>
     </div>
   );
