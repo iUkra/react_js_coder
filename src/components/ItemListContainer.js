@@ -1,32 +1,28 @@
-// ItemListContainer.js
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+const productsData = [
+  { id: 1, name: "Producto 1", category: "categoria1", image: "image1.jpg" },
+  { id: 2, name: "Producto 2", category: "categoria2", image: "image2.jpg" },
+  { id: 3, name: "Producto 3", category: "categoria3", image: "image3.jpg" },
+];
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  const { id: categoryId } = useParams(); // Esto parece estar bien
-  const location = useLocation();
+  const { id: categoryId } = useParams();
 
   useEffect(() => {
     if (categoryId) {
-      // Lógica para cargar productos por categoría
-      // Ejemplo temporal para evitar el error
-      const productsByCategory = [
-        { id: 1, name: "Producto 1", image: "image1.jpg" },
-        { id: 2, name: "Producto 2", image: "image2.jpg" },
-      ];
-      setProducts(productsByCategory);
+      const productToShow = productsData.find(product => product.category === `categoria${categoryId}`);
+      if (productToShow) {
+        setProducts([productToShow]);
+      } else {
+        setProducts([]);
+      }
     } else {
-      // Lógica para cargar todos los productos
-      // Ejemplo temporal para evitar el error
-      const allProducts = [
-        { id: 1, name: "Producto 1", image: "image1.jpg" },
-        { id: 2, name: "Producto 2", image: "image2.jpg" },
-        { id: 3, name: "Producto 3", image: "image3.jpg" },
-      ];
-      setProducts(allProducts);
+      setProducts(productsData);
     }
-  }, [categoryId, location]);
+  }, [categoryId]);
 
   return (
     <div className="item-list-container">
@@ -42,3 +38,5 @@ const ItemListContainer = () => {
 };
 
 export default ItemListContainer;
+
+
