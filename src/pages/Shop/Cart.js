@@ -156,7 +156,7 @@ const form = () =>{
       id='form-input-control-error-name'
       control={Input}
       label='Nombre completo'
-      placeholder='Cosme Fulanito'
+      placeholder='Nombre Completo'
       onChange={handleName}/>
    
       ) : (
@@ -165,7 +165,7 @@ const form = () =>{
         id='form-input-control-error-name'
         control={Input}
         label='Nombre completo'
-        placeholder='Cosme Fulanito'
+        placeholder='Nombre Completo'
         error={{
           content: 'Ingresa tu nombre valido',
           pointing: 'below',
@@ -182,7 +182,7 @@ const form = () =>{
       id='form-input-control-error-email'
       control={Input}
       label='Email'
-      placeholder='cosme@fulanito.com'
+      placeholder='nombre@mail.com'
       onChange={handleEmail}/>
 
         {email!==validemail ? (
@@ -191,7 +191,7 @@ const form = () =>{
       id='form-input-control-error-email'
       control={Input}
       label='Re-Email'
-      placeholder='cosme@fulanito.com'
+      placeholder='nombre@mail.com'
       error={{
         content: 'Los correos no coinciden',
         pointing: 'below',
@@ -203,7 +203,7 @@ const form = () =>{
       id='form-input-control-error-email'
       control={Input}
       label='Re-Email'
-      placeholder='cosme@fulanito.com'
+      placeholder='nombre@mail.com'
       onChange={handleValidEmail}/>
         )}
       </div>
@@ -214,7 +214,7 @@ const form = () =>{
         id='form-input-control-error-email'
         control={Input}
         label='Correo electronico'
-        placeholder='cosme@fulanito.com'
+        placeholder='nombre@mail.com'
         error={{
           content: 'Ingresa un correo valido',
           pointing: 'below',
@@ -231,7 +231,7 @@ const form = () =>{
       id='form-input-control-error-phone'
       control={Input}
       label='Telefono'
-      placeholder='Cosme Fulanito'
+      placeholder='Número'
       onChange={handlePhone}/>
    
       ) : (
