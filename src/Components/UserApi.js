@@ -1,23 +1,23 @@
-
 import { useState, useEffect } from 'react';
-import { collection, getFirestore, query, getDocs } from 'firebase/firestore';
+import { collection, query, getDocs } from 'firebase/firestore';
+import { db } from '../services/firebase/firebaseConfig';
 
-
-
-const db = getFirestore();
-
-const FireBaseApi = () => {
+const UserApi = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const getUsers = async () => {
-      const arrEmp = [];
-      const q = query(collection(db, "users"));
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        arrEmp.push({ ...doc.data(), id: doc.id });
-      });
-      setData(arrEmp);
+      try {
+        const arrEmp = [];
+        const q = query(collection(db, "users"));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          arrEmp.push({ ...doc.data(), id: doc.id });
+        });
+        setData(arrEmp);
+      } catch (error) {
+        console.error("Error al cargar datos de Firebase:", error);
+      }
     };
 
     getUsers();
@@ -26,6 +26,4 @@ const FireBaseApi = () => {
   return data;
 };
 
-export default FireBaseApi;
-
-
+export default UserApi;

@@ -11,4 +11,3 @@ const ApiContext = createContext({
 });
 
 export default ApiContext;
-
