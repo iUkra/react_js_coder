@@ -17,12 +17,6 @@ const CartWidget= () =>{
   <i className="shop icon"></i>
   </div>
   </Link>
-  
-
-      
-  
-  
-   
-  )
+  );
 };
 export default CartWidget;

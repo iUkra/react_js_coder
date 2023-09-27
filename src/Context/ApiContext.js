@@ -1,13 +1,15 @@
-import  {createContext} from 'react';
+import React, { createContext } from 'react';
 
+class ApiContextClass {
+  constructor() {
+    this.items = [];
+    this.email = "";
+    this.name = "";
+    this.phone = "";
+    this.lastPurchase = "";
+  }
+}
 
-const ApiContext = createContext({
-    // Array de productos
-    items: [],
-    email: "",
-    name: "",
-    phone: "",
-    lastPurchase: "",
-});
+const ApiContext = createContext(new ApiContextClass());
 
 export default ApiContext;
