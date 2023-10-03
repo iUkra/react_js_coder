@@ -1,56 +1,58 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-class CartContextClass {
-  constructor() {
-    this.items = [];
-  }
+const CartContext = createContext();
 
-  addItems(x) {
-    if (this.items.length !== 0) {
-      if (!this.lookItem(x)) {
-        this.items.push(x);
-      } else {
-        alert('Ya está en el carrito');
-      }
+export function CartProvider({ children }) {
+  const [items, setItems] = useState([]);
+
+  const addItems = (x) => {
+    if (!lookItem(x)) {
+      setItems([...items, x]);
     } else {
-      this.items.push(x);
+      alert('Ya está en el carrito');
     }
   }
 
-  lookItem(b) {
-    return this.items.some(item => item.id === b.id);
+  const lookItem = (b) => {
+    return items.some(item => item.id === b.id);
   }
 
-  clear() {
-    this.items = [];
+  const clear = () => {
+    setItems([]);
   }
 
-  eliminarId(h) {
-    this.items.splice(h, 1);
+  const eliminarId = (h) => {
+    const newItems = items.filter((_, index) => index !== h);
+    setItems(newItems);
   }
 
-  upCant(h) {
-    if (this.items[h].cantidad === this.items[h].stock) {
+  const upCant = (h) => {
+    if (items[h].cantidad < items[h].stock) {
+      const newItems = [...items];
+      newItems[h].cantidad++;
+      setItems(newItems);
+    } else {
       alert('No se puede aumentar más');
+    }
+  }
+
+  const downCant = (h) => {
+    const newItems = [...items];
+    newItems[h].cantidad--;
+    if (newItems[h].cantidad === 0) {
+      eliminarId(h);
     } else {
-      this.items[h].cantidad++;
+      setItems(newItems);
     }
   }
 
-  downCant(h) {
-    this.items[h].cantidad--;
-    if (this.items[h].cantidad === 0) {
-      this.eliminarId(h);
-    }
-  }
+  return (
+    <CartContext.Provider value={{ items, addItems, clear, eliminarId, upCant, downCant }}>
+      {children}
+    </CartContext.Provider>
+  );
 }
-
-const CartContext = createContext(new CartContextClass());
 
 export function useCartContext() {
   return useContext(CartContext);
 }
-
-export default CartContext;
-
-

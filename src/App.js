@@ -10,25 +10,27 @@ import SingleProduct from './pages/Products/ItemDetail';
 import SingleCategory from './pages/Category/SingleCategory';
 import ViewPurchase from './pages/User/ViewPurchase';
 
-function App() {
+import { CartProvider } from './Context/CartContext'; 
+import { ApiProvider } from './Context/ApiContext'; 
 
+function App() {
   return (
     <Router>
-    <Switch>
-      <Navbar />
-    </Switch>
-      <Switch>
-        <Route exact path="/" component={Index} />
-  
-        <Route exact path="/products" component={Product}/>
-        <Route exact path="/category" component={IndexCategory}/>
-        <Route path="/products/:productId" component={SingleProduct}/>
-        <Route exact path="/category/:categoryId" component={SingleCategory} />
-
-        <Route exact path="/cart" component={Cart} />
-
-        <Route path="/:userId/:purchaseId/" component={ViewPurchase} />
-      </Switch>
+      {/* Envuelve tu aplicación con los proveedores */}
+      <CartProvider>
+        <ApiProvider>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Index} />
+            <Route exact path="/products" component={Product}/>
+            <Route exact path="/category" component={IndexCategory}/>
+            <Route path="/products/:productId" component={SingleProduct}/>
+            <Route exact path="/category/:categoryId" component={SingleCategory} />
+            <Route exact path="/cart" component={Cart} />
+            <Route path="/:userId/:purchaseId/" component={ViewPurchase} />
+          </Switch>
+        </ApiProvider>
+      </CartProvider>
     </Router>
   );
 }

@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
-import CartContext from "../../Context/CartContext";
 import { Container, Button, Nav, Form, FormControl } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
+import { useCartContext } from "../../Context/CartContext"; 
 
 const Navigation = () => {
-  
-  const context = useContext(CartContext);
+  const context = useCartContext(); 
   return (
     <Navbar style={{ background: "#222222" }} expand="lg">
       <Container fluid style={{ justifyContent: "center" }}>

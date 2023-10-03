@@ -1,10 +1,10 @@
-import {Link, useParams} from "react-router-dom"
-import finalData from "../../Components/ProductsApi.js"
-import React, { useContext, useState } from 'react';
-import CartContext from "../../Context/CartContext"
-import { Image, Segment, Icon, Divider, Header } from 'semantic-ui-react'
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import ApiDolar from '../../Components/ApiDolar'
+import React, { useState, useContext } from 'react';
+import { Link, useParams } from "react-router-dom";
+import finalData from "../../Components/ProductsApi.js";
+import { useCartContext } from "../../Context/CartContext"; 
+import { Image, Segment, Icon, Divider, Header } from "semantic-ui-react";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import ApiDolar from "../../Components/ApiDolar";
 
 const ItemDetail = () => {
   const dolarApi = ApiDolar()
@@ -14,7 +14,7 @@ const ItemDetail = () => {
   let count=-1
   const filterItem=[]
   
-  const context = useContext(CartContext);
+  const context = useCartContext();
   const increase = (h)=>{
     setCounter(contador== h.target.value ? contador+0 : contador+1)
   }

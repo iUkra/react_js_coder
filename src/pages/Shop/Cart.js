@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import CartContext from '../../Context/CartContext';
+import { useCartContext } from '../../Context/CartContext';
 import ApiContext from '../../Context/ApiContext';
 import { Link } from 'react-router-dom';
-import { Input, Image, Form, Segment, Header, Dimmer, Loader, Label, Icon, Step } from 'semantic-ui-react'; // Asegúrate de importar Label
+import { Input, Image, Form, Segment, Header, Dimmer, Loader, Label, Icon, Step } from 'semantic-ui-react'; 
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import "./Cart.css";
 import AOS from 'aos';
@@ -16,7 +16,7 @@ AOS.init({
 });
 
 const Cart = () => {
-  const context = useContext(CartContext);
+  const context = useCartContext();
   const contextApi = useContext(ApiContext);
   const lastValue = finalData();
   const userValue = userData();

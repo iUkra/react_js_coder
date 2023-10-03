@@ -1,15 +1,26 @@
-import React, { createContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-class ApiContextClass {
-  constructor() {
-    this.items = [];
-    this.email = "";
-    this.name = "";
-    this.phone = "";
-    this.lastPurchase = "";
-  }
+const ApiContext = createContext();
+
+export function ApiProvider({ children }) {
+  const [apiState, setApiState] = useState({
+    items: [],
+    email: "",
+    name: "",
+    phone: "",
+    lastPurchase: ""
+  });
+
+  return (
+    <ApiContext.Provider value={{ apiState, setApiState }}>
+      {children}
+    </ApiContext.Provider>
+  );
 }
 
-const ApiContext = createContext(new ApiContextClass());
+export function useApiContext() {
+  return useContext(ApiContext);
+}
 
 export default ApiContext;
+

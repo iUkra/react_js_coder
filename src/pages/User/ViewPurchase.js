@@ -11,7 +11,7 @@ const ViewPurchase = () => {
   if (!container) {
     return (
       <div>
-        <h1>No existe dicha compra con ese usuario</h1>
+        <h1>Realizando compra, espere por favor...</h1>
       </div>
     );
   }
@@ -62,7 +62,7 @@ const ViewPurchase = () => {
                 </Segment.Group>
                 <Segment>Email: {userId}</Segment>
                 <Segment>Numero de compra: {purchaseId}</Segment>
-                <Segment inverted color="black">Cualquier consulta no dude en consultar al +11111111</Segment>
+                <Segment inverted color="black">¡Muchas gracias por comprar en iUkra Store!</Segment>
               </Segment.Group>
             </Col>
             <Col xs={12} md={6}>
