@@ -14,7 +14,6 @@ const SingleCategory = () => {
   const newArr = [];
 
   if (filterCategory !== undefined && dolarApi !== undefined) {
-    // Filtrar los elementos que coinciden con el ID ingresado por la ruta
     filterCategory.forEach((b) => {
       if (b.category === categoryId) {
         newArr.push(b);
@@ -22,7 +21,6 @@ const SingleCategory = () => {
     });
   }
 
-  // Renderizar todos los elementos del filtro
   const lastFilter = newArr.map((x) => {
     const inStock = x.stock >= 1;
 
@@ -69,14 +67,14 @@ const SingleCategory = () => {
             Cargando
           </div>
         ) : (
-            <Col md={10}>
-              <Container style={{ maxWidth: '100%' }}>
-                <Row style={{ maxWidth: '100%', justifyContent: 'center' }}>
-                  {lastFilter}
-                </Row>
-              </Container>
-            </Col>
-          )}
+          <Col md={10}>
+            <Container style={{ maxWidth: '100%' }}>
+              <Row style={{ maxWidth: '100%', justifyContent: 'center' }}>
+                {lastFilter}
+              </Row>
+            </Container>
+          </Col>
+        )}
       </Row>
     </Container>
   );
