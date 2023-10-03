@@ -21,4 +21,3 @@ useEffect(() => {
 return data
 }
 export default FireBaseApi;
-
